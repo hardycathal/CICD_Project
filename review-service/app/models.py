@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, timezone
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
 from sqlalchemy import Integer, String, DateTime, UniqueConstraint
 
@@ -12,4 +12,4 @@ class ReviewDB(Base):
     tmdb_movie_id: Mapped[int] = mapped_column(Integer, nullable=False)
     rating: Mapped[int] = mapped_column(Integer, nullable=False)
     review_text: Mapped[str | None] = mapped_column(String(500), nullable=False)
-    created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.now(datetime.timezone.utc), nullable=False)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=lambda: datetime.now(timezone.utc), nullable=False)

@@ -51,7 +51,7 @@ def get_popular():
     
     return response.json()
 
-@app.get("api/movies/search")
+@app.get("/api/movies/search")
 def search_movie(query: str):
     if not TMDB_API_KEY:
         raise HTTPException(status_code=500, detail="TMDB_API_KEY not configured")
