@@ -68,7 +68,7 @@ def get_review(id: int, db: Session = Depends(get_db)):
     return review
 
 ## Delete a review ##
-@app.delete("/api/users/id}", status_code=204)
+@app.delete("/api/reviews/{id}}", status_code=204)
 def delete_review(id: int, db: Session = Depends(get_db)) -> Response: 
     review = db.get(ReviewDB, id) 
     if not review: 
